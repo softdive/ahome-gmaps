@@ -17,7 +17,6 @@
 package com.ait.toolkit.gmaps.client.core;
 
 import com.ait.toolkit.core.client.JsObject;
-import com.ait.toolkit.core.client.JsoHelper;
 import com.ait.toolkit.gmaps.client.base.LatLng;
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -30,7 +29,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class LatLngBounds extends JsObject {
 
     public LatLngBounds() {
-        jsObj = JsoHelper.createObject();
+        jsObj = createPeer();
     }
 
     public LatLngBounds(JavaScriptObject obj) {
@@ -48,6 +47,11 @@ public class LatLngBounds extends JsObject {
     public LatLngBounds(LatLng sw, LatLng nw) {
         jsObj = create(sw.getJsObj(), nw.getJsObj());
     }
+    
+    
+    private native JavaScriptObject createPeer() /*-{
+		return new $wnd.google.maps.LatLngBounds();
+	}-*/ ;
 
     /**
      * Returns true if the given lat/lng is in jso bounds.

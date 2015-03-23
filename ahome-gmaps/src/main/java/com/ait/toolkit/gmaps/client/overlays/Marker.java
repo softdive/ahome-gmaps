@@ -414,7 +414,7 @@ public class Marker extends MVCObject {
     }-*/;
 
     private native void _addMouseEventHandler(String event, MouseEventHandler handler)/*-{
-		var map = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
+		var marker = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
 		$wnd.google.maps.event
 				.addListener(
 						marker,
