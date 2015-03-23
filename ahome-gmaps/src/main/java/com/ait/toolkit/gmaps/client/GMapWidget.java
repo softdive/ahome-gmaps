@@ -34,6 +34,7 @@ public class GMapWidget extends Widget {
 	private GMap map;
 	private GMapOptions options;
 	private com.google.gwt.dom.client.Element div;
+	private MapReadyHandler readyHandler;
 
 	public GMapWidget(GMapOptions options) {
 		this.options = options;
@@ -64,6 +65,7 @@ public class GMapWidget extends Widget {
 			@Override
 			public void execute() {
 				setUpMap(div, options.getJsObj());
+				handleReadyEvent(map.getJsObj());
 				GMapWidget.this.getElement().getStyle()
 						.setWidth(Window.getClientWidth(), Unit.PX);
 				GMapWidget.this.getElement().getStyle()
@@ -74,17 +76,8 @@ public class GMapWidget extends Widget {
 		});
 	}
 
-	public void addMapReadyHandler(final MapReadyHandler handler) {
-		new Timer() {
-			@Override
-			public void run() {
-				if (map != null && map.getJsObj() != null) {
-					cancel();
-					handleReadyEvent(map.getJsObj(), handler);
-				}
-			}
-		}.scheduleRepeating(500);
-
+	public void addMapReadyHandler(MapReadyHandler handler) {
+		this.readyHandler = handler;
 	}
 
 	public GMap getMap() {
@@ -104,15 +97,13 @@ public class GMapWidget extends Widget {
 		return options;
 	}
 
-	private native void handleReadyEvent(JavaScriptObject map,
-			MapReadyHandler handler)/*-{
-		$wnd.google.maps.event
-				.addListenerOnce(
-						map,
-						'tilesloaded',
-						$entry(function() {
-							handler.@com.ait.toolkit.gmaps.client.events.handlers.MapReadyHandler::onMapReady()();
-						}));
+	private native void handleReadyEvent(JavaScriptObject map)/*-{
+		var handler = this.@com.ait.toolkit.gmaps.client.GMapWidget::readyHandler;
+		$wnd.google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+			if (handler != null && handler != undefined) {
+		    	handler.@com.ait.toolkit.gmaps.client.events.handlers.MapReadyHandler::onMapReady()();
+			}
+		});
 	}-*/;
 
 	public void strech() {
