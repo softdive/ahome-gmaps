@@ -55,7 +55,7 @@ public class Circle extends MVCObject {
 	}-*/;
 
 	private static native JavaScriptObject createPeer(JavaScriptObject options)/*-{
-		return new $wnd.google.maps.Circle(options);
+		return new $wnd.google.maps.Circle(options); 
 	}-*/;
 
 	/**
