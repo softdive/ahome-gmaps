@@ -299,5 +299,10 @@ public class GMap extends MVCObject {
 							handler.@com.ait.toolkit.gmaps.client.events.handlers.MouseEventHandler::onMouseEvent(Lcom/ait/toolkit/gmaps/client/events/MouseEvent;)(e);
 						});
 	}-*/;
+	
+	public native void triggerEvent(String eventName) /*-{
+		var map = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
+		$wnd.google.maps.event.trigger(map, eventName);
+	}-*/;
 
 }
