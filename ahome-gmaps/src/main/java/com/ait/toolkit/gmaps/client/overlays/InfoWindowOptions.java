@@ -72,7 +72,7 @@ public class InfoWindowOptions extends AbstractOption {
 		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
 		jso.maxWidth = value;
     }-*/;
-
+    
     public native double getMaxWidth()/*-{
 		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
 		return jso.maxWidth;
@@ -127,5 +127,10 @@ public class InfoWindowOptions extends AbstractOption {
 		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
 		return jso.zIndex;
     }-*/;
+
+	public native void disableCloseButton() /*-{
+		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
+		//jso.buttons.close.visible = false;
+	}-*/;
 
 }

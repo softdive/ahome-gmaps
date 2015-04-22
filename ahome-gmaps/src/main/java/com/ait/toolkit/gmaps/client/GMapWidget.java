@@ -25,7 +25,6 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -66,12 +65,12 @@ public class GMapWidget extends Widget {
 			public void execute() {
 				setUpMap(div, options.getJsObj());
 				handleReadyEvent(map.getJsObj());
-				GMapWidget.this.getElement().getStyle()
+				/*GMapWidget.this.getElement().getStyle()
 						.setWidth(Window.getClientWidth(), Unit.PX);
 				GMapWidget.this.getElement().getStyle()
 						.setHeight(Window.getClientHeight(), Unit.PX);
 				GMapWidget.this.setWidth(Window.getClientWidth() + "px");
-				GMapWidget.this.setHeight(Window.getClientHeight() + "px");
+				GMapWidget.this.setHeight(Window.getClientHeight() + "px");*/
 			}
 		});
 	}

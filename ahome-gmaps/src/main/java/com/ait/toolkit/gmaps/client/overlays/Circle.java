@@ -65,7 +65,7 @@ public class Circle extends MVCObject {
 	 */
 	public final native LatLngBounds getBounds()/*-{
 		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
-		var obj = jso.bounds;
+		var obj = jso.getBounds();
 		var toReturn = @com.ait.toolkit.gmaps.client.core.LatLngBounds::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
 		return toReturn;
 	}-*/;
@@ -85,7 +85,8 @@ public class Circle extends MVCObject {
 	}-*/;
 
 	public final native void setMap(GMap map)/*-{
-		this.setMap(map);
+		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
+		jso.setMap(map);
 	}-*/;
 
 	public final native void setOptions(CircleOptions value)/*-{
@@ -117,6 +118,11 @@ public class Circle extends MVCObject {
 		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
 		jso
 				.setCenter(value.@com.ait.toolkit.core.client.JsObject::getJsObj()());
+	}-*/;
+	
+	public final native void setEditable(boolean editable)/*-{
+		var jso = this.@com.ait.toolkit.core.client.JsObject::getJsObj()();
+		jso.setEditable(editable);
 	}-*/;
 
 	public final native LatLng getCenter()/*-{

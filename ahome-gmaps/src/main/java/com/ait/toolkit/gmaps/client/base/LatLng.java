@@ -128,4 +128,9 @@ public class LatLng extends JsObject {
 			boolean noWrap)/*-{
 							return new $wnd.google.maps.LatLng(lat, lng, noWrap);
 							}-*/;
+	
+	@Override
+	public String toString() {
+		return getLat()+","+getLng();
+	}
 }
